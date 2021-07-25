@@ -1,0 +1,9 @@
+[bitex]
+version=2.1
+base_url=https://sandbox.bitex.la/api
+users_endpoint=users
+issues_endpoint=issues
+natural_docket_seed_endpoint=natural_docket_seeds
+identification_seed_endpoint=identification_seeds
+domicile_seed_endpoint=domicile_seeds
+attachments_endpoint=attachments

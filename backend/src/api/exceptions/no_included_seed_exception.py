@@ -1,0 +1,2 @@
+class NoIncludedSeedException(Exception):
+    pass
