@@ -1,7 +1,6 @@
 import unittest
 from unittest.mock import MagicMock
 from src.api.factories.user_factory import UserFactory
-from src.api.factories.domicile_factory import DomicileFactory
 
 
 class TestUserFactory(unittest.TestCase):
@@ -10,7 +9,6 @@ class TestUserFactory(unittest.TestCase):
         cls.user_factory = UserFactory()
         cls.mocked_domicile = MagicMock()
         cls.mocked_file = MagicMock()
-        DomicileFactory.create_from_dict = MagicMock(return_value=cls.mocked_domicile)
         cls.mocked_user = {
             'firstName': 'Test',
             'lastName': 'User',

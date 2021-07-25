@@ -3,7 +3,7 @@ from flask_cors import CORS, cross_origin
 
 from src.initializers import registration_parser, registration_service, registration_validator
 from src.initializers import identification_parser, identification_service, identification_validator
-#from src.initializers import domicile_service
+from src.initializers import domicile_parser, domicile_service, domicile_validator
 
 
 app = Flask(__name__)
@@ -68,10 +68,21 @@ def user_identification():
 @app.route('/domicile', methods=['POST'])
 @cross_origin(supports_credentials=True)
 def domicile():
-    user_data = registration_parser.parse(request)
-    registration_validator.validate_domicile(user_data)
+    try:
+        domicile_data = domicile_parser.parse(request)
+        domicile_validator.validate(domicile_data)
 
-    #domicile_service.create(user_data)
+        domicile_seed, attachments_seed = domicile_service.create(domicile_data)
 
-    response_object = {'status': 'success', 'payload': user_data}
-    return jsonify(response_object)
+        response_object = {
+            'status': 'success',
+            'payload': {
+                'identification': {
+                    'id': domicile_seed.id
+                },
+                'attachments': [{'id': attachments_seed.id}]
+            }
+        }
+        return jsonify(response_object)
+    except Exception as e:
+        return jsonify({'status': 'error'}), 500

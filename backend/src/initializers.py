@@ -23,13 +23,18 @@ from src.services.domicile_service import DomicileService
 
 from src.parsers.registration_parser import RegistrationParser
 from src.parsers.identification_parser import IdentificationParser
+from src.parsers.domicile_parser import DomicileParser
 from src.validators.registration_validator import RegistrationValidator
 from src.validators.identification_validator import IdentificationValidator
+from src.validators.domicile_validator import DomicileValidator
 
 registration_validator = RegistrationValidator()
 identification_validator = IdentificationValidator()
+domicile_validator = DomicileValidator()
 registration_parser = RegistrationParser()
 identification_parser = IdentificationParser()
+domicile_parser = DomicileParser()
+
 
 serializer_selector = SerializerSelector(
     users=UserSerializer(),

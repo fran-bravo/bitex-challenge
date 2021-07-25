@@ -131,8 +131,10 @@
                 const result = await post(
                     'http://localhost:5000/domicile', formData, { headers: { 'Content-Type': 'multipart/form-data' } }
                 )
-                this.showUserDomicile = false
-                this.showUserFinish = true
+                if(result.statusText === 'OK') {
+                  this.showUserDomicile = false
+                  this.showUserFinish = true
+                }
             },
             onUserFinishBack(event) {
                 event.preventDefault()
