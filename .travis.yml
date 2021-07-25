@@ -1,0 +1,9 @@
+sudo: true
+language: python
+python:
+  - 3.9
+
+install:
+  - pip3 install -r backend/requirements.txt
+script:
+   python -m unittest discover -s backend/
